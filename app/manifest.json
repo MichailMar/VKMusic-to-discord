@@ -9,7 +9,7 @@
                 "background.js"
             ],
             "matches": [
-                "https://vk.com/audios*"
+                "https://vk.com/*"
             ]
         }
     ],
