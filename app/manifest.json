@@ -1,0 +1,21 @@
+{
+    "manifest_version": 3,
+    "name": "Click to run",
+    "description": "Runs a script when the user clicks the action toolbar icon.",
+    "version": "1.0",
+    "content_scripts": [
+        {
+            "js": [
+                "background.js"
+            ],
+            "matches": [
+                "https://vk.com/audios*"
+            ]
+        }
+    ],
+
+    "permissions": [
+        "scripting",
+        "activeTab"
+    ]
+}
