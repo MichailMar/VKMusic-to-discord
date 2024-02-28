@@ -12,21 +12,22 @@ function send_post(url, artist, img, title) {
 
 var last_title = "";
 function check_update_audio() {
-    if (last_title != document.getElementsByClassName("audio_page_player_title_link")[0].text) {
-        last_title = document.getElementsByClassName("audio_page_player_title_link")[0].text;
+    if (last_title != document.getElementsByClassName("top_audio_player_title")[0].innerHTML) {
+        last_title = document.getElementsByClassName("top_audio_player_title")[0].innerHTML;
 
-        console.log("update");
+        console.log("update —");
         console.log(last_title);
-        console.log(document.getElementsByClassName("audio_page_player_title")[0].getElementsByClassName("artist_link")[0].text);
 
-        var artits = document.getElementsByClassName("audio_page_player_title")[0].getElementsByClassName("artist_link")[0].text;
+        let artits = last_title.split("—")[1];  
 
-        var img = document.getElementsByClassName("audio_page_player__cover _audio_page_player__cover")[0],
-            style = img.currentStyle || window.getComputedStyle(img, false),
-            bi = style.backgroundImage.slice(4, -1).replace(/"/g, "");
+        if (document.getElementsByClassName("AudioPlayerBlock__root").length == 0) {
+            var img = "https://static.tildacdn.com/tild3131-3536-4139-b632-333235346662/Group_2.png";
+        } else {
+            var img = document.getElementsByClassName("AudioPlayerBlock__root")[0].getElementsByClassName("vkuiImageBase__img")[0].getAttribute("src");
+        }
 
-        console.log('Image URL: ' + bi);
-        send_post("http://127.0.0.1:1221/", artits, bi, last_title);
+        console.log('Image URL: ' + img);
+        send_post("http://127.0.0.1:1221/", artits, img, last_title.split("—")[0]);
     }
 }
 
